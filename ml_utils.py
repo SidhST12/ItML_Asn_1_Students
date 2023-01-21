@@ -125,16 +125,21 @@ class edaDF:
             figure.show()
         return figure
 
+    def describe(self):
+        return self.data.describe()
+
     def fullEDA(self):
         out1 = widgets.Output()
         out2 = widgets.Output()
         out3 = widgets.Output()
         out4 = widgets.Output()
 
-        tab = widgets.Tab(children = [out1, out2, out3])
+        tab = widgets.Tab(children = [out1, out2, out3,out4])
         tab.set_title(0, 'Info')
         tab.set_title(1, 'Categorical')
         tab.set_title(2, 'Numerical')
+        tab.set_title(3, 'Statistics')
+
         display(tab)
 
         with out1:
@@ -147,3 +152,6 @@ class edaDF:
         with out3:
             fig3 = self.histPlots(kde=True, show=False)
             plt.show(fig3)
+
+        with out4:
+            self.describe()
