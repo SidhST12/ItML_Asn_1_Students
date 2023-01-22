@@ -125,7 +125,7 @@ class edaDF:
             figure.show()
         return figure
 
-    def des(self):
+    def stats(self):
         return self.data.describe()
 
     def fullEDA(self):
@@ -154,4 +154,4 @@ class edaDF:
             plt.show(fig3)
 
         with out4:
-            self.des()
+            self.stats()
