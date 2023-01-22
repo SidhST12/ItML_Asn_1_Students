@@ -128,17 +128,36 @@ class edaDF:
     def stats(self):
         return self.data.describe()
 
+    def isnull(self):
+
+        return self.data.isnull().sum()  
+
+    def outliers(self, col: str, k: int = 3):
+        mean = self.df[col].mean()
+        std = self.df[col].std()
+        lower = mean - k*std
+        upper = mean + k*std
+        return self.df[(self.df[col] < lower) | (self.df[col] > upper)]
+    
+    def correlation(self):
+        return self.df.corr()
+
     def fullEDA(self):
         out1 = widgets.Output()
         out2 = widgets.Output()
         out3 = widgets.Output()
         out4 = widgets.Output()
+        out5 = widgets.Output()
+        out6 = widgets.Output()
+        out7 = widgets.Output()
 
-        tab = widgets.Tab(children = [out1, out2, out3,out4])
+        tab = widgets.Tab(children = [out1, out2, out3,out4,out5,out6,out7])
         tab.set_title(0, 'Info')
         tab.set_title(1, 'Categorical')
         tab.set_title(2, 'Numerical')
         tab.set_title(3, 'Statistics')
+        tab.set_title(4, 'NullValues')
+        tab.set_title(5, '')
 
         display(tab)
 
@@ -155,3 +174,13 @@ class edaDF:
 
         with out4:
             self.stats()
+            
+        with out5:
+            self.data.isnull().sum()  
+
+        with out6:
+            self.outliers()
+
+        with out7:
+            self.correlation()
+
