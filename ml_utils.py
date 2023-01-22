@@ -157,7 +157,8 @@ class edaDF:
         tab.set_title(2, 'Numerical')
         tab.set_title(3, 'Statistics')
         tab.set_title(4, 'NullValues')
-        tab.set_title(5, '')
+        tab.set_title(5, 'Outliers')
+        tab.set_title(6, 'Correlation Matrix')
 
         display(tab)
 
