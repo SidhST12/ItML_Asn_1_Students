@@ -64,6 +64,20 @@ class edaDF:
             If true, use the hue function in the countplot to split the data by the target value
         show : bool
             If true, display the graphs when the function is called. Otherwise the figure is returned. 
+    outlier(self, col: str, k: int = 3)
+        print outliers in the data
+
+        Parameters
+        ----------
+        elf.df[(self.df[col] < lower) 
+        if true, prints True 
+        else print false
+        
+        (self.df[col] > upper)]
+        if true prints true
+        else print flase
+
+        
 
     fullEDA()
         Displays the full EDA process. 
